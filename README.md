@@ -18,16 +18,29 @@ To resolve this issue, ensure that you include the Lombok dependency in your `po
     <scope>provided</scope>
 </dependency>
 ```
+**Resolving Bean Validation Warning**
+During the setup or runtime, you might see a warning like:
+```
+o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no [Jakarta Bean Validation provider] could be found. Add a provider like [Hibernate Validator] (RI) to your classpath.
+```
+**Solution**
+To get rid of this warning, you need to add the Spring Boot Starter Validation dependency to your pom.xml. This dependency includes Hibernate Validator, which is a Jakarta Bean Validation provider, resolving the issue. Here's how you should add it:
 
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
 
-Note: This dependency was added to this project from the very beginning to avoid such issues. If you're creating a new project, make sure to include this dependency right after project creation.
+**Note**: This dependency was added to this project from the very beginning to avoid such issues. If you're creating a new project, make sure to include this dependency right after project creation.
 
-Additional Steps
+**Additional Steps:**
 IDE Configuration: If you're using an IDE like IntelliJ IDEA, ensure that annotation processing is enabled:
 Go to Preferences > Build, Execution, Deployment > Compiler > Annotation Processors and check "Enable annotation processing".
 Lombok Plugin: Install the Lombok plugin if your IDE supports it to improve Lombok annotation recognition.
 
-Project Setup
+**Project Setup:**
 To set up this project:
 
 Clone the repository.
@@ -35,7 +48,7 @@ Ensure Maven is installed and configured.
 Run mvn clean install to build the project.
 Start the application with ``` mvn spring-boot:run ``` or through your IDE.
 
-Swagger Documentation
+**Swagger Documentation**
 For API documentation, you can access Swagger UI at:
 
 http://localhost:8090/swagger-ui/index.html#/
