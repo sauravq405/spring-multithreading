@@ -17,11 +17,11 @@ public class ThreadDemo {
         return ResponseEntity.ok(Math.random());
     }
 
-    public ResponseEntity<?> printRunnableNames() {
+    public ResponseEntity<Void> printRunnableNames() {
         RunnableDemoExecutable runnableDemoExecutable = new RunnableDemoExecutable();
         Thread thread = new Thread(runnableDemoExecutable);
         thread.start();
         IntStream.rangeClosed(1,1000).forEach(i -> System.out.println(Thread.currentThread().getName()));
-        return ResponseEntity.ok(Math.random());
+        return ResponseEntity.noContent().build();
     }
 }

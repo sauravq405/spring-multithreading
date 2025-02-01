@@ -31,7 +31,7 @@ public class PracticeController {
     }
 
     @GetMapping("/printRunnableNames")
-    public ResponseEntity<?> printRunnableNames() {
+    public ResponseEntity<Void> printRunnableNames() {
         return threadDemo.printRunnableNames();
     }
 }
