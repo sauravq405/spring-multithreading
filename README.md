@@ -55,3 +55,23 @@ http://localhost:8090/swagger-ui/index.html#/
 ```
 
 This URL will provide you with interactive documentation of the RESTful services in this project.
+
+The command to generate javadocs in the custom creatred folder "docs" (inside project) is below:
+First clean and install the project:
+```bash
+mvn clean package
+```
+Run:
+```bash
+mvn clean javadoc:javadoc
+```
+
+If you want to manually specify the classpath:
+```
+mvn javadoc:javadoc -DjavadocClasspath=$(mvn dependency:build-classpath -Dmdep.outputFile=/dev/stdout)
+```
+
+The command to reload maven project in intellij idea:
+```bash
+mvn -U idea:idea
+```
