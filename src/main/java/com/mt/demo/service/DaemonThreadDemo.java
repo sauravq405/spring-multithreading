@@ -14,7 +14,7 @@ public class DaemonThreadDemo {
         //Garbage collector is an example
         //JVM doesn't wait for daemon threads before shutting down
         //But JVM does wait for user threads
-        //in this case 
+        //in this case
         t.start();
         System.out.println("Reached end of method: demoDaemonThread()");
         return ResponseEntity.noContent().build();
