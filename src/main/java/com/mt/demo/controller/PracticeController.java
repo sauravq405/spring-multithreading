@@ -2,6 +2,7 @@ package com.mt.demo.controller;
 
 import com.mt.demo.service.PracticeService;
 import com.mt.demo.service.ThreadDemo;
+import com.mt.demo.service.ThreadLifecycleDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ public class PracticeController {
 
     @Autowired
     private ThreadDemo threadDemo;
+    @Autowired
+    private ThreadLifecycleDemo threadLifecycleDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -33,5 +36,10 @@ public class PracticeController {
     @GetMapping("/printRunnableNames")
     public ResponseEntity<Void> printRunnableNames() {
         return threadDemo.printRunnableNames();
+    }
+
+    @GetMapping("/demoThreadLifecycle")
+    public ResponseEntity<Void> demoThreadLifecycle() throws InterruptedException {
+        return threadLifecycleDemo.demoThreadLifecycle();
     }
 }

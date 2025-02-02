@@ -11,8 +11,11 @@ import java.util.stream.IntStream;
 public class ThreadDemo {
 
     public ResponseEntity<?> printThreadNames() {
-        ThreadDemoExecutable threadDemoExecutable = new ThreadDemoExecutable();
-        threadDemoExecutable.start();
+        ThreadDemoExecutable threadDemoExecutable = new ThreadDemoExecutable(); //1. NEW
+        threadDemoExecutable.start(); // 2.RUNNABLE
+        //3. RUNNING
+        //4. BLOCKED/WAITING
+        //5. TERMINATED
         IntStream.rangeClosed(1,1000).forEach(i -> System.out.println(Thread.currentThread().getName()));
         return ResponseEntity.ok(Math.random());
     }
