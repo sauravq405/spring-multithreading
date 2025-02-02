@@ -24,6 +24,10 @@ public class PracticeController {
     private ThreadMethodsDemo threadMethodsDemo;
     @Autowired
     private ThreadPriorityDemo threadPriorityDemo;
+    @Autowired
+    private ThreadInterruptDemo threadInterruptDemo;
+    @Autowired
+    private ThreadYieldDemo threadYieldDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -53,5 +57,15 @@ public class PracticeController {
     @GetMapping("/threadPriorityDemo")
     public ResponseEntity<Void> demoThreadPriority() throws InterruptedException {
         return threadPriorityDemo.demoThreadPriority();
+    }
+
+    @GetMapping("/threadInterruptDemo")
+    public ResponseEntity<Void> demoThreadInterrupt() throws InterruptedException {
+        return threadInterruptDemo.demoThreadInterrupt();
+    }
+
+    @GetMapping("/threadYieldDemo")
+    public ResponseEntity<Void> demoThreadYield() throws InterruptedException {
+        return threadYieldDemo.demoThreadYield();
     }
 }
