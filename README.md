@@ -50,7 +50,7 @@ Start the application with ``` mvn spring-boot:run ``` or through your IDE.
 
 **Swagger Documentation**
 For API documentation, you can access Swagger UI at:
-```bash
+```
 http://localhost:8090/swagger-ui/index.html#/
 ```
 
