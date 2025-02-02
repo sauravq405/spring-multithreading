@@ -12,7 +12,8 @@ public class ThreadYieldDemo {
         t1.start();
         t2.start();
         // Here Thread.yield() method has been called inside run() method of ThreadYielder
-        // yield() method
+        // yield() method gives a signal/Hint to the JVM to consider giving a chance of execution to other threads waiting
+        // Its upto the JVM whether to entertain that request or not
         return ResponseEntity.noContent().build();
     }
 }
