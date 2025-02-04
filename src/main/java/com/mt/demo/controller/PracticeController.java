@@ -32,6 +32,10 @@ public class PracticeController {
     private DaemonThreadDemo daemonThreadDemo;
     @Autowired
     private ThreadSynchronizerDemo threadSynchronizerDemo;
+    @Autowired
+    private RentrantLockDemo rentrantLockDemo;
+    @Autowired
+    private RentrantExample rentrantExample;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -81,6 +85,16 @@ public class PracticeController {
     @GetMapping("/threadSynchronizerDemo")
     public ResponseEntity<Void> demoSynchronization() throws InterruptedException {
         return threadSynchronizerDemo.demoSynchronization();
+    }
+
+    @GetMapping("/rentrantLockDemo")
+    public ResponseEntity<Void> demoRentrantLock() throws InterruptedException {
+        return rentrantLockDemo.demoRentrantLock();
+    }
+
+    @GetMapping("/rentrantExample")
+    public ResponseEntity<Void> runReantrant() throws InterruptedException {
+        return rentrantExample.runReantrant();
     }
 
 
