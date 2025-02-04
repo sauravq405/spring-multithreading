@@ -86,4 +86,4 @@ The correct way to suppress warnings and doclint issues is by using the `additio
 - **Javadoc Compliance**: Be mindful that, even though warnings can be suppressed, it is still a good practice to include Javadoc comments in your code.
 
 ## 6. Conclusion
-By updating the Maven Javadoc Plugin configuration to include `-Xdoclint:none`, the user successfully generated Javadoc documentation while suppressing warnings for missing comments. The final output is placed in the `./docs` directory.
+By updating the Maven Javadoc Plugin configuration to include `-Xdoclint:none`, the user successfully generated Javadoc documentation while suppressing warnings for missing comments. The final output is placed in the location`./docs` directory.
