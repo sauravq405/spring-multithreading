@@ -75,3 +75,8 @@ The command to reload maven project in intellij idea:
 ```bash
 mvn -U idea:idea
 ```
+
+Link to sonar-cloud:
+```
+https://sonarcloud.io/project/configuration?id=sauravq405-codescan_sauravq405-app
+```
