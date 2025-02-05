@@ -36,6 +36,10 @@ public class PracticeController {
     private RentrantLockDemo rentrantLockDemo;
     @Autowired
     private RentrantExample rentrantExample;
+    @Autowired
+    private FairnessInLockDemo fairnessInLockDemo;
+    @Autowired
+    private ReadWriteLockDemo readWriteLockDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -97,5 +101,14 @@ public class PracticeController {
         return rentrantExample.runReantrant();
     }
 
+    @GetMapping("/fairnessInLockDemo")
+    public ResponseEntity<Void> demoFairnessInLock() throws InterruptedException {
+        return fairnessInLockDemo.demoFairnessInLock();
+    }
+
+    @GetMapping("/readWriteLockDemo")
+    public ResponseEntity<Void> demoReadWriteLock() throws InterruptedException {
+        return readWriteLockDemo.demoReadWriteLock();
+    }
 
 }
