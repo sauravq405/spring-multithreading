@@ -40,6 +40,8 @@ public class PracticeController {
     private FairnessInLockDemo fairnessInLockDemo;
     @Autowired
     private ReadWriteLockDemo readWriteLockDemo;
+    @Autowired
+    private DeadLockDemo deadLockDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -109,6 +111,11 @@ public class PracticeController {
     @GetMapping("/readWriteLockDemo")
     public ResponseEntity<Void> demoReadWriteLock() throws InterruptedException {
         return readWriteLockDemo.demoReadWriteLock();
+    }
+
+    @GetMapping("/deadLockDemo")
+    public ResponseEntity<Void> demoDeadLock() throws InterruptedException {
+        return deadLockDemo.demoDeadLock();
     }
 
 }
