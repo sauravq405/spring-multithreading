@@ -52,7 +52,7 @@ public class DeadLockDemo {
             synchronized (pen) {//Added synchronized block to release dedlock - this technique is called
                 //Implementing a lock ordering strategy where locks are always acquired in the same order.
                 //here we are telling compiler to acquire lock of paper first, if you want to use it
-                
+
                 paper.writeWithPaperAndPen(pen); //thread 1 locks paper and tries to lock pen (pre-resolution of deadlock)
             }
         }

@@ -42,6 +42,8 @@ public class PracticeController {
     private ReadWriteLockDemo readWriteLockDemo;
     @Autowired
     private DeadLockDemo deadLockDemo;
+    @Autowired
+    private ProducerConsumerDemo producerConsumerDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -116,6 +118,11 @@ public class PracticeController {
     @GetMapping("/deadLockDemo")
     public ResponseEntity<Void> demoDeadLock() throws InterruptedException {
         return deadLockDemo.demoDeadLock();
+    }
+
+    @GetMapping("/producerConsumerDemo")
+    public ResponseEntity<Void> demoProducerConsumer() throws InterruptedException {
+        return producerConsumerDemo.demoProducerConsumer();
     }
 
 }
