@@ -1,18 +1,52 @@
 package com.mt.demo.serxecutorsframework;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+@Service
 public class WithExecutorsFrameWork {
 
 
-    public ResponseEntity<Void> demoWithExecutorsFrameWork() {
+    public ResponseEntity<Void> demoWithoutExecutorsFrameWork() {
         long startTime = System.currentTimeMillis();
         //singleThreadedApproach(); //no explicit thread created, relies on executing thread
-        multiThreadedApproach(); //explicit thread created, doesn't rely on executing thread
+        //multiThreadedApproach(); //explicit thread created, doesn't rely on executing thread
+        simpleExecutorServiceApproach();
         System.out.println("\nTime taken for calculation: " + (System.currentTimeMillis() - startTime));
         return ResponseEntity.noContent().build();
+    }
+
+    private void simpleExecutorServiceApproach() {
+        ExecutorService executor = Executors.newFixedThreadPool(9);
+        for (int i = 1; i < 10; i++) {
+            int finalI = i;
+            executor.submit(() -> {
+                int factorial = factorial(finalI);
+                System.out.println("Factorial of " + finalI + " = " + factorial);
+            });
+        }
+        //It is mandatory to invoke shutdown(), after you have invoked submit() on the executors method
+        // it ensures that submit() method can't be called again once shutdown() is called
+        executor.shutdown();
+        try {
+            //It ensures total execution of all the threads in the pool, similar to join()
+            //executor.awaitTermination(1, TimeUnit.SECONDS);
+
+            //AlternateApproach
+            //the method executor.awaitTermination(10, TimeUnit.MILLISECONDS) keeps on returning false
+            // till the time the all the tasks are not completed.
+            // once all the tasks are completed, it returns true
+            // so it will come out of below loop when it returns true, and the condition will become false
+            while (!executor.awaitTermination(10, TimeUnit.MILLISECONDS)){
+                System.out.println("Waiting...");
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void singleThreadedApproach() {

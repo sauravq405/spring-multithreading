@@ -1,14 +1,17 @@
 package com.mt.demo.controller;
 
 import com.mt.demo.service.*;
-import com.mt.demo.serxecutorsframework.WithExecutorsFrameWork;
+import com.mt.demo.serxecutorsframework.ExecutorFutureDemo;
 import com.mt.demo.serxecutorsframework.WithoutExecutorsFrameWork;
+import com.mt.demo.serxecutorsframework.WithExecutorsFrameWork;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api")
@@ -47,9 +50,11 @@ public class PracticeController {
     @Autowired
     private ProducerConsumerDemo producerConsumerDemo;
     @Autowired
+    private WithExecutorsFrameWork withExecutorsFrameWork;
+    @Autowired
     private WithoutExecutorsFrameWork withoutExecutorsFrameWork;
     @Autowired
-    private WithExecutorsFrameWork withExecutorsFrameWork;
+    private ExecutorFutureDemo executorFutureDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -134,11 +139,16 @@ public class PracticeController {
 
     @GetMapping("/withoutExecutorsFrameWork")
     public ResponseEntity<Void> demoWithoutExecutorsFrameWork() throws InterruptedException {
-        return withoutExecutorsFrameWork.demoWithoutExecutorsFrameWork();
+        return withExecutorsFrameWork.demoWithoutExecutorsFrameWork();
     }
 
     @GetMapping("/withExecutorsFrameWork")
     public ResponseEntity<Void> demoWithExecutorsFrameWork() throws InterruptedException {
-        return withExecutorsFrameWork.demoWithExecutorsFrameWork();
+        return withoutExecutorsFrameWork.demoWithExecutorsFrameWork();
+    }
+
+    @GetMapping("/executorFutureDemo")
+    public ResponseEntity<Void> demoExecutorFutureDemo() throws InterruptedException, ExecutionException {
+        return executorFutureDemo.demoExecutorFutureDemo();
     }
 }
