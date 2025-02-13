@@ -1,19 +1,19 @@
 package com.mt.demo.serxecutorsframework;
 
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 @Service
 public class ExecutorFutureDemo {
 
     public ResponseEntity<Void> demoExecutorFutureDemo() throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future<Integer> future = executor.submit(() -> 4567);
+        Callable<Integer> callable = () -> 4567; // Callable.call() method is called, since it's returning something.
+        Runnable runnable = () -> System.out.println("test-print"); //Runnable.run() method is called, since i's not returning anything.
+        Future<?> future = executor.submit(callable);
         if (future.isDone()) {
             System.out.println("Task is done!!");
         }
