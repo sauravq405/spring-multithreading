@@ -1,9 +1,7 @@
 package com.mt.demo.controller;
 
 import com.mt.demo.service.*;
-import com.mt.demo.serxecutorsframework.ExecutorFutureDemo;
-import com.mt.demo.serxecutorsframework.WithoutExecutorsFrameWork;
-import com.mt.demo.serxecutorsframework.WithExecutorsFrameWork;
+import com.mt.demo.serxecutorsframework.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +53,10 @@ public class PracticeController {
     private WithoutExecutorsFrameWork withoutExecutorsFrameWork;
     @Autowired
     private ExecutorFutureDemo executorFutureDemo;
+    @Autowired
+    private InvokeAllExecutorsDemo invokeAllExecutorsDemo;
+    @Autowired
+    private ExecutorsTimeoutCancel executorsTimeoutCancel;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -150,5 +152,15 @@ public class PracticeController {
     @GetMapping("/executorFutureDemo")
     public ResponseEntity<Void> demoExecutorFutureDemo() throws InterruptedException, ExecutionException {
         return executorFutureDemo.demoExecutorFutureDemo();
+    }
+
+    @GetMapping("/invokeAllExecutorsDemo")
+    public ResponseEntity<Void> demoInvokeAllExecutors() throws InterruptedException, ExecutionException {
+        return invokeAllExecutorsDemo.demoInvokeAllExecutors();
+    }
+
+    @GetMapping("/executorsTimeoutCancel")
+    public ResponseEntity<Void> demoExecutorsTimeoutCancel() throws InterruptedException, ExecutionException {
+        return executorsTimeoutCancel.demoExecutorsTimeoutCancel();
     }
 }
