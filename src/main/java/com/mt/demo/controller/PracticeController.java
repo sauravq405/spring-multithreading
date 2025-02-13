@@ -1,6 +1,8 @@
 package com.mt.demo.controller;
 
 import com.mt.demo.service.*;
+import com.mt.demo.serxecutorsframework.WithExecutorsFrameWork;
+import com.mt.demo.serxecutorsframework.WithoutExecutorsFrameWork;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +46,10 @@ public class PracticeController {
     private DeadLockDemo deadLockDemo;
     @Autowired
     private ProducerConsumerDemo producerConsumerDemo;
+    @Autowired
+    private WithoutExecutorsFrameWork withoutExecutorsFrameWork;
+    @Autowired
+    private WithExecutorsFrameWork withExecutorsFrameWork;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -125,4 +131,14 @@ public class PracticeController {
         return producerConsumerDemo.demoProducerConsumer();
     }
 
+
+    @GetMapping("/withoutExecutorsFrameWork")
+    public ResponseEntity<Void> demoWithoutExecutorsFrameWork() throws InterruptedException {
+        return withoutExecutorsFrameWork.demoWithoutExecutorsFrameWork();
+    }
+
+    @GetMapping("/withExecutorsFrameWork")
+    public ResponseEntity<Void> demoWithExecutorsFrameWork() throws InterruptedException {
+        return withExecutorsFrameWork.demoWithExecutorsFrameWork();
+    }
 }
