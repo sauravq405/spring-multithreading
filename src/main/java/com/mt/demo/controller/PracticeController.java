@@ -6,6 +6,8 @@ import com.mt.demo.serxscheduledexecutors.ScheduledExecutorDemo;
 import com.mt.demo.serxscountdownlatch.CountDownLatchDemo;
 import com.mt.demo.serxscyclicbarrier.CyclicBarrierDemo;
 import com.mt.demo.serxscycompletablefuture.CompletableFutureDemo;
+import com.mt.demo.serxsvolatileatomic.AtomicityDemo;
+import com.mt.demo.serxsvolatileatomic.VolatileDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -70,6 +72,10 @@ public class PracticeController {
     private CyclicBarrierDemo cyclicBarrierDemo;
     @Autowired
     private CompletableFutureDemo completableFutureDemo;
+    @Autowired
+    private VolatileDemo volatileDemo;
+    @Autowired
+    private AtomicityDemo atomicityDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -196,4 +202,15 @@ public class PracticeController {
     public ResponseEntity<Void> demoCompletableFuture() throws InterruptedException, ExecutionException, BrokenBarrierException {
         return completableFutureDemo.demoCompletableFuture();
     }
+
+    @GetMapping("/volatileDemo")
+    public ResponseEntity<Void> demoVolatileDemo() throws InterruptedException, ExecutionException, BrokenBarrierException {
+        return volatileDemo.demoVolatileDemo();
+    }
+
+    @GetMapping("/atomicityDemo")
+    public ResponseEntity<Void> demoAtomicity() throws InterruptedException, ExecutionException, BrokenBarrierException {
+        return atomicityDemo.demoAtomicity();
+    }
+
 }
