@@ -5,6 +5,7 @@ import com.mt.demo.serxecutorsframework.*;
 import com.mt.demo.serxscheduledexecutors.ScheduledExecutorDemo;
 import com.mt.demo.serxscountdownlatch.CountDownLatchDemo;
 import com.mt.demo.serxscyclicbarrier.CyclicBarrierDemo;
+import com.mt.demo.serxscycompletablefuture.CompletableFutureDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,8 @@ public class PracticeController {
     private CountDownLatchDemo countDownLatchDemo;
     @Autowired
     private CyclicBarrierDemo cyclicBarrierDemo;
+    @Autowired
+    private CompletableFutureDemo completableFutureDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -187,5 +190,10 @@ public class PracticeController {
     @GetMapping("/cyclicBarrierDemo")
     public ResponseEntity<Void> demoCyclicBarrier() throws InterruptedException, ExecutionException, BrokenBarrierException {
         return cyclicBarrierDemo.demoCyclicBarrier();
+    }
+
+    @GetMapping("/completableFutureDemo")
+    public ResponseEntity<Void> demoCompletableFuture() throws InterruptedException, ExecutionException, BrokenBarrierException {
+        return completableFutureDemo.demoCompletableFuture();
     }
 }
