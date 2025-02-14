@@ -3,6 +3,8 @@ package com.mt.demo.controller;
 import com.mt.demo.service.*;
 import com.mt.demo.serxecutorsframework.*;
 import com.mt.demo.serxscheduledexecutors.ScheduledExecutorDemo;
+import com.mt.demo.serxscountdownlatch.CountDownLatchDemo;
+import com.mt.demo.serxscyclicbarrier.CyclicBarrierDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -60,6 +63,10 @@ public class PracticeController {
     private ExecutorsTimeoutCancel executorsTimeoutCancel;
     @Autowired
     private ScheduledExecutorDemo scheduledExecutorDemo;
+    @Autowired
+    private CountDownLatchDemo countDownLatchDemo;
+    @Autowired
+    private CyclicBarrierDemo cyclicBarrierDemo;
 
     @GetMapping("/practice")
     public ResponseEntity<?> practice() {
@@ -170,5 +177,15 @@ public class PracticeController {
     @GetMapping("/scheduledExecutorDemo")
     public ResponseEntity<Void> demoScheduledExecutor() throws InterruptedException, ExecutionException {
         return scheduledExecutorDemo.demoScheduledExecutor();
+    }
+
+    @GetMapping("/countDownLatchDemo")
+    public ResponseEntity<Void> demoCountDownLatch() throws InterruptedException, ExecutionException {
+        return countDownLatchDemo.demoCountDownLatch();
+    }
+
+    @GetMapping("/cyclicBarrierDemo")
+    public ResponseEntity<Void> demoCyclicBarrier() throws InterruptedException, ExecutionException, BrokenBarrierException {
+        return cyclicBarrierDemo.demoCyclicBarrier();
     }
 }
